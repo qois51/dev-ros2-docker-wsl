@@ -32,7 +32,7 @@ Sebelum masuk ke instalasi teknis, mari kita pahami istilah-istilah utama yang a
 *   **WSLg (WSL GUI):** Subsistem WSL yang otomatis meneruskan tampilan grafis aplikasi Linux ke Windows. Berkat ini, simulator 3D seperti Gazebo bisa tampil di Windows Anda.
 *   **Docker:** Bayangkan Docker seperti "kotak bekal" yang sudah berisi makanan lengkap. Di dunia software, Docker mengemas sistem operasi Linux mini beserta semua library ROS2 dan Gazebo ke dalam satu paket (**Image**). Saat dijalankan, paket ini menjadi **Container** yang terisolasi dari sistem utama PC Anda.
 *   **ROS2 (Robot Operating System 2):** Bukan sistem operasi seperti Windows atau Linux, melainkan sebuah framework/middleware. ROS2 menyediakan pipa komunikasi (disebut **Topics**, **Services**, dan **Actions**) agar program-program kecil (disebut **Nodes**) seperti program sensor, kamera, dan kontrol motor dapat saling bertukar data dengan mudah.
-*   **MAVLink & MAVROS:** 
+*   **MAVLink & MAVROS:**
     *   *MAVLink* adalah bahasa protokol komunikasi standar yang digunakan oleh Flight Controller drone (seperti Pixhawk dengan firmware ArduPilot atau PX4).
     *   *MAVROS* adalah program penerjemah di ROS2 yang menerjemahkan bahasa MAVLink menjadi bahasa ROS2 (Topics), sehingga Anda bisa mengontrol drone lewat script ROS2.
 *   **SITL (Software In The Loop):** Simulator autopilot drone yang berjalan di komputer. Autopilot mengira ia sedang terbang di drone asli, padahal ia hanya menerima sensor buatan dan mengirim perintah motor ke lingkungan simulasi.
@@ -52,11 +52,7 @@ Untuk memastikan simulasi 3D berjalan dengan lancar, pastikan PC/Laptop Anda mem
 | **Storage** | 10 GB ruang kosong (SSD sangat disarankan) | 30 GB ruang kosong (SSD) |
 
 ### Langkah Persiapan di Windows (Sebelum Mulai)
-1.  **Aktifkan Virtualisasi Hardware di BIOS:**
-    *   Saat PC baru menyala, masuk ke BIOS (biasanya tekan tombol `F2`, `F12`, atau `Del`).
-    *   Cari menu **Virtualization Technology**, **Intel VT-x**, atau **AMD-V**, lalu ubah statusnya menjadi **Enabled**.
-    *   *Cara cek di Windows:* Buka Task Manager (`Ctrl + Shift + Esc`) -> Tab **Performance** -> Lihat tulisan **Virtualization: Enabled** di bagian bawah kanan.
-2.  **Update Driver VGA NVIDIA (Khusus pengguna NVIDIA):**
+1.  **Update Driver VGA NVIDIA (Khusus pengguna NVIDIA):**
     *   Unduh dan instal driver resmi terbaru melalui aplikasi NVIDIA GeForce Experience atau website resmi NVIDIA.
     *   **Catatan Kritis:** Cukup instal driver di Windows. Jangan pernah mengunduh/menginstal driver NVIDIA untuk Linux di dalam terminal Ubuntu WSL Anda! WSL akan otomatis menjembatani akses ke driver Windows tersebut.
 
@@ -377,14 +373,14 @@ Berikut adalah daftar solusi jika Anda mengalami kendala saat mengikuti panduan 
 
 ### Q1: Error `NVIDIA driver not found` atau kegagalan saat menjalankan `docker compose build dev_full`
 *   **Penyebab:** NVIDIA Container Toolkit belum terinstal dengan benar atau driver VGA di Windows belum terupdate.
-*   **Solusi:** 
+*   **Solusi:**
     1.  Ulangi langkah-langkah di **Langkah 3** secara teliti.
     2.  Pastikan layanan docker di-restart: `sudo service docker restart`.
     3.  Gunakan target `dev_lite` jika laptop Anda tidak memiliki kartu grafis NVIDIA diskrit.
 
 ### Q2: Perintah `docker` atau `docker-compose` memunculkan pesan error `Cannot connect to the Docker daemon`
 *   **Penyebab:** Layanan Docker di dalam WSL2 belum menyala secara otomatis.
-*   **Solusi:** 
+*   **Solusi:**
     Jalankan perintah berikut di terminal Ubuntu WSL Anda sebelum memulainya:
     ```bash
     sudo service docker start
