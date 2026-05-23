@@ -68,20 +68,20 @@ Diagram berikut menjelaskan bagaimana komponen perangkat lunak di Windows, WSL2,
 
 ```mermaid
 graph TD
-    subgraph Windows Host (PC/Laptop)
-        MP[Mission Planner / SITL Autopilot]
-        NV_Win[Driver NVIDIA GPU Windows]
+    subgraph WH ["Windows Host (PC/Laptop)"]
+        MP["Mission Planner / SITL Autopilot"]
+        NV_Win["Driver NVIDIA GPU Windows"]
     end
 
-    subgraph WSL2 Environment (Ubuntu 24.04)
-        Docker[Docker Engine Native] <--> NV_WSL[NVIDIA Container Toolkit]
-        WSLg[WSLg - Server Antarmuka Grafis]
+    subgraph WSL ["WSL2 Environment (Ubuntu 24.04)"]
+        Docker["Docker Engine Native"] <--> NV_WSL["NVIDIA Container Toolkit"]
+        WSLg["WSLg - Server Antarmuka Grafis"]
     end
 
-    subgraph Docker Container
-        subgraph dev_full (Container dengan Gazebo & GPU)
-            ROS2[ROS 2 Jazzy] <--> MAVROS[Node MAVROS]
-            GZ[Simulator Gazebo Harmonic] <--> GPU[Akses GPU Passthrough]
+    subgraph DC ["Docker Container"]
+        subgraph DF ["dev_full (GUI + GPU)"]
+            ROS2["ROS 2 Jazzy"] <--> MAVROS["Node MAVROS"]
+            GZ["Simulator Gazebo Harmonic"] <--> GPU["Akses GPU Passthrough"]
         end
     end
 
