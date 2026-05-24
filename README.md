@@ -176,7 +176,10 @@ sudo service docker restart
 ---
 
 ### Langkah 4: Membangun & Menjalankan Kontainer (dev_lite / dev_full)
-Kembali ke terminal **Ubuntu (WSL)**. Masuk ke folder project tempat file `Dockerfile` dan `docker-compose.yml` berada (misal `~/vtol_dev`).
+Kembali ke terminal **Ubuntu (WSL)**. jalankan kode sebagai berikut untuk mengambil repository dan menyimpannya ke folder lokal
+    ```bash
+    git clone https://github.com/qois51/dev-ros2-docker-wsl vtol_dev
+    ```
 
 Anda dapat memilih membangun salah satu jenis kontainer yang sesuai dengan PC Anda:
 *   **Jika PC Anda High-End (Gunakan dev_full untuk simulator Gazebo 3D + GPU Passthrough):**
@@ -213,7 +216,7 @@ Untuk memverifikasi bahwa kontainer berhasil terpasang dan siap digunakan:
 2.  **Cek Konektivitas GUI & GPU (Khusus versi FULL):**
     Di dalam kontainer `vtol_full`, jalankan perintah:
     ```bash
-    gazebo
+    gz
     ```
     *Jika jendela Gazebo terbuka secara mulus di desktop Windows Anda, instalasi GUI & GPU passthrough berhasil! Tekan `Ctrl+C` di terminal untuk menutup Gazebo kembali.*
 3.  **Cek Deteksi IP Windows Host:**
