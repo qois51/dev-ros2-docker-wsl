@@ -177,9 +177,9 @@ sudo service docker restart
 
 ### Langkah 4: Membangun & Menjalankan Kontainer (dev_lite / dev_full)
 Kembali ke terminal **Ubuntu (WSL)**. jalankan kode sebagai berikut untuk mengambil repository dan menyimpannya ke folder lokal
-    ```bash
-    git clone https://github.com/qois51/dev-ros2-docker-wsl vtol_dev
-    ```
+```bash
+git clone https://github.com/qois51/dev-ros2-docker-wsl vtol_dev
+```
 
 Anda dapat memilih membangun salah satu jenis kontainer yang sesuai dengan PC Anda:
 *   **Jika PC Anda High-End (Gunakan dev_full untuk simulator Gazebo 3D + GPU Passthrough):**
